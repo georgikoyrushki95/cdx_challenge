@@ -8,7 +8,7 @@ def index(request):
 	context_dict = {'messages' : EmergencyMessage.objects.all()}
 	return render(request, 'bank_app/index.html', context_dict)
 
-
+#
 def register(request):
 	registered = False
 
@@ -51,5 +51,5 @@ def login(request):
 			return HttpResponse("Invalid login details supplied")
 
 	else:
-		return render(request, 'bank/login.html', {})
+		return render(request, 'bank_app4/login.html', {})
 
