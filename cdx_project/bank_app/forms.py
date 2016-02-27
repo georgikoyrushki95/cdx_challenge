@@ -10,8 +10,8 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password')
 
 
-class EmergencyMessageForm(formst.ModelForm):
+class EmergencyMessageForm(forms.ModelForm):
 	content = forms.CharField(max_length = 500, help_text = "Please enter your emergency message")
-	
+
 	class Meta:
 		model = EmergencyMessage
