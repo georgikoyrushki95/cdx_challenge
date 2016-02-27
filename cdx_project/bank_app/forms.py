@@ -1,5 +1,5 @@
 from django import forms
-from bank_app.models import EmergencyMessage
+from models import EmergencyMessage
 from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
