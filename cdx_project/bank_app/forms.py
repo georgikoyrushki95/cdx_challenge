@@ -15,3 +15,4 @@ class EmergencyMessageForm(forms.ModelForm):
 
 	class Meta:
 		model = EmergencyMessage
+        exclude = ('user',)
