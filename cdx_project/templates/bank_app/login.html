@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
+{% load staticfiles %}
+
+{% block body_block %}
+
+ <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <h1>Login</h1>
+                <form id="login_form" method="post" action="/rango/login/">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="usernameField">Username</label>
+                        <input type="text" class="form-control" id="usernameField" name="username" value="" size="50" />
+                    </div>
+                    <div class="form-group">
+                        <label for="passField">Password</label>
+                        <input type="password" class="form-control" id="passField" name="password" value="" size="50" />
+                    </div>
+
+                    <input type="submit" value="submit" />
+                </form>
+            </div>
+        </div>
+
+ </div>
+
+
+=======
 
 {% block body_block %}
 
     
 
+>>>>>>> upstream/master
 {% endblock %}
