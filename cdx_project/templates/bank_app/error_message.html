@@ -2,10 +2,10 @@
 
 {% block body_block %}
     
-    <form id="em_mes_form" method = "pos" 
+    <form id="em_mes_form" method = "post"
     action = "/bank/error-message">
 
-        {% csfr token %}
+        {% csrf_token %}
 
         {{emergency_form.as_p}}
 

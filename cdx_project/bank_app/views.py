@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from models import EmergencyMessage
 from bank_app.forms import UserForm
-from formst import EmergencyMessageForm
+from forms import EmergencyMessageForm
 
 def index(request):
 	print type(EmergencyMessage.objects.all())
