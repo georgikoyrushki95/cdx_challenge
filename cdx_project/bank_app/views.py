@@ -3,8 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from models import EmergencyMessage
 from bank_app.forms import UserForm
 from forms import EmergencyMessageForm
+from django.contrib.auth import authenticate, login
 
 def index(request):
+	# messages = []
+	# for m in EmergencyMessage.objects.all():
+	# 	messages.append(m.content)
 	print type(EmergencyMessage.objects.all())
 	context_dict = {'messages' : EmergencyMessage.objects.all()}
 	return render(request, 'bank_app/index.html', context_dict)
@@ -47,7 +51,7 @@ def error_message(request):
 
 
 
-def login(request):
+def user_login(request):
 
 	if request.method == 'POST':
 		username = request.POST.get('username')

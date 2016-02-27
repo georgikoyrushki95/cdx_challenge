@@ -8,8 +8,17 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
                 <h1>Welcome</h1>
-                <a href='/bank/register'>Register here</a>
-                <a href='/bank/sign-in'>Login here</a>
+                {%  if not user.is_authenticated %}
+	                <a href='/bank/register'>Register here</a>
+	                <a href='/bank/sign-in'>Login here</a>
+	            {% endif %}
+
+	            {% for mess in messages %}
+	            	<p> {{mess.content}} </p>
+
+	            {% endfor %}
+
+
 
             </div>
         </div>
