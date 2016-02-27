@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    
+    <form id="em_mes_form" method = "pos" 
+    action = "/bank/error-message">
+
+        {% csfr token %}
+
+        {{emergency_form.as_p}}
+
+        <input type = "submit", name ="submit"
+            value = "Submit message"/>
+    </form>
+
+{% endblock %}

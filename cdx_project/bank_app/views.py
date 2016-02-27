@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from models import EmergencyMessage
 from bank_app.forms import UserForm
+from formst import EmergencyMessageForm
 
 def index(request):
 	print type(EmergencyMessage.objects.all())
 	context_dict = {'messages' : EmergencyMessage.objects.all()}
 	return render(request, 'bank_app/index.html', context_dict)
 
-#
+
 def register(request):
 	registered = False
 
@@ -27,6 +28,23 @@ def register(request):
 	return render(request,
             'bank_app/register.html',
             {'user_form': user_form,  'registered': registered} )
+
+
+def error_message(request):
+	if request.method == 'POST':
+		em_message_form = EmergencyMessageForm(data = request.POST)
+		
+		if em_message_form.isvalid() :
+			emf = em_message_form.save()
+			emf.user = request.user
+			emf.save()
+			return HttpResponseRedirect('/bank/')
+
+	em_message_form = EmergencyMessageForm()
+	context_dict = {'emergency_form' : em_message_form}
+	return render(request, 'bank_app/error_message.html', context_dict)
+
+
 
 
 def login(request):
