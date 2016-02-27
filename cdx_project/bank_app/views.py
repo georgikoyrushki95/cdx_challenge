@@ -51,5 +51,5 @@ def login(request):
 			return HttpResponse("Invalid login details supplied")
 
 	else:
-		return render(request, 'bank_app4/login.html', {})
+		return render(request, 'bank_app/login.html', {})
 
