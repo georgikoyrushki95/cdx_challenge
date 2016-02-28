@@ -4,7 +4,7 @@ from models import EmergencyMessage
 from bank_app.forms import UserForm, UserProfileForm, EmergencyMessageForm
 from forms import EmergencyMessageForm
 from django.contrib.auth import authenticate, login, logout
-
+from django.utils.html import escape
 def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect('/bank/')
@@ -14,11 +14,11 @@ def index(request):
 	if request.method == "POST":
 		# print request.POST.get('content')
 
-		message = EmergencyMessage(content = request.POST.get('content'),  user = request.user)
+		message = EmergencyMessage(content = escape(request.POST.get('content')),  user = request.user)
 		message.save()
 
 	message_form = EmergencyMessageForm()
-	context_dict = {'messages' : EmergencyMessage.objects.all(), 'message_form': message_form}
+	context_dict = {'messages' : EmergencyMessage.objects.all()[::-1], 'message_form': message_form}
 	return render(request, 'bank_app/index.html', context_dict)
 
 
@@ -26,8 +26,8 @@ def register(request):
 	registered = False
 
 	if request.method == 'POST':
-		user_form = UserForm(data = request.POST)
-		user_profile_form = UserProfileForm(data = request.POST)
+		user_form = escape(UserForm(data = request.POST))
+		user_profile_form = escape(UserProfileForm(data = request.POST))
 		print user_form.is_valid()
 		if user_form.is_valid() and user_profile_form.is_valid():
 			print "Hello"
@@ -69,8 +69,8 @@ def emergency_message(request):
 def user_login(request):
 
 	if request.method == 'POST':
-		username = request.POST.get('username')
-		password = request.POST.get('password')
+		username = escape(request.POST.get('username'))
+		password = escape(request.POST.get('password'))
 
 		user = authenticate(username = username, 
 			password = password)
