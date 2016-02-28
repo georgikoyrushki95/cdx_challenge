@@ -11,11 +11,17 @@ def user_logout(request):
 
 
 def index(request):
-	# messages = []
-	# for m in EmergencyMessage.objects.all():
-	# 	messages.append(m.content)
+	if request.method == "POST":
+		# print request.POST.get('content')
+		message_form = EmergencyMessageForm(request.POST)
+		
+		if message_form.is_valid():
+			print "success"
+			message_form.save()
+		else:
+			print "failire"
+
 	message_form = EmergencyMessageForm()
-	# messages = EmergencyMessage.objects.all()[:-10]
 	context_dict = {'messages' : EmergencyMessage.objects.all(), 'message_form': message_form}
 	return render(request, 'bank_app/index.html', context_dict)
 
