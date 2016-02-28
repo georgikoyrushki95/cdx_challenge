@@ -14,3 +14,5 @@ class EmergencyMessage(models.Model):
 
 	def __unicode__(self):
 		return self.content
+
+

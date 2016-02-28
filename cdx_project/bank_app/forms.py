@@ -1,9 +1,9 @@
 from django import forms
-<<<<<<< HEAD
+
 from models import EmergencyMessage
-=======
+
 from bank_app.models import EmergencyMessage, UserProfile
->>>>>>> upstream/master
+
 from django.contrib.auth.models import User
 
 class UserProfileForm(forms.ModelForm):
@@ -23,7 +23,11 @@ class UserForm(forms.ModelForm):
 
 
 class EmergencyMessageForm(forms.ModelForm):
-	content = forms.CharField(max_length = 500, help_text = "Please enter your emergency message")
-	class Meta:
-		model = EmergencyMessage
-        fields = ('content', )
+    content = forms.CharField(max_length = 500, help_text = "Please enter your emergency message")
+
+
+
+    class Meta:
+        model = EmergencyMessage
+        fields = ('content', 'user_profile' )
+
