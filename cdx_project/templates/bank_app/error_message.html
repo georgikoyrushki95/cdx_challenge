@@ -7,7 +7,7 @@
 
         {% csrf_token %}
 
-        {{emergency_form.content}}
+        {{emergency_form.as_p}}
 
         <input type = "submit", name ="submit"
             value = "Submit message"/>
