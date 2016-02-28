@@ -1,16 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from models import EmergencyMessage
-from bank_app.forms import UserForm
+from bank_app.forms import UserForm, UserProfileForm, EmergencyMessageForm
 from forms import EmergencyMessageForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+
+def user_logout(request):
+	logout(request)
+	return HttpResponseRedirect('/bank/')
+
 
 def index(request):
-	# messages = []
-	# for m in EmergencyMessage.objects.all():
-	# 	messages.append(m.content)
-	print type(EmergencyMessage.objects.all())
-	context_dict = {'messages' : EmergencyMessage.objects.all()}
+	if request.method == "POST":
+		# print request.POST.get('content')
+		message_form = EmergencyMessageForm(request.POST)
+		
+		if message_form.is_valid():
+			print "success"
+			message_form.save()
+		else:
+			print "failire"
+
+	message_form = EmergencyMessageForm()
+	context_dict = {'messages' : EmergencyMessage.objects.all(), 'message_form': message_form}
 	return render(request, 'bank_app/index.html', context_dict)
 
 
@@ -19,22 +31,29 @@ def register(request):
 
 	if request.method == 'POST':
 		user_form = UserForm(data = request.POST)
-
-		if user_form.is_valid():
+		user_profile_form = UserProfileForm(data = request.POST)
+		print user_form.is_valid()
+		if user_form.is_valid() and user_profile_form.is_valid():
+			print "Hello"
 			user = user_form.save()
-
 			user.set_password(user.password)
 			user.save()
+			user_profile = user_profile_form.save(commit = False)
+			user_profile.user = user
+			user_profile.save()
 			registered = True
+		else:
+			print "Hello"
 	else:
+		user_profile_form = UserProfileForm()
 		user_form = UserForm()
 
 	return render(request,
             'bank_app/register.html',
-            {'user_form': user_form,  'registered': registered} )
+            {'user_form': user_form,  'registered': registered, 'user_profile_form': user_profile_form})
 
 
-def error_message(request):
+def emergency_message(request):
 	if request.method == 'POST':
 		em_message_form = EmergencyMessageForm(data = request.POST)
 		
@@ -46,7 +65,7 @@ def error_message(request):
 
 	em_message_form = EmergencyMessageForm()
 	context_dict = {'emergency_form' : em_message_form}
-	return render(request, 'bank_app/error_message.html', context_dict)
+	return render(request, 'bank_app/emergency_message.html', context_dict)
 
 
 

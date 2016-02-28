@@ -4,19 +4,32 @@
 {% block body_block %}
 
     <div class="container">
-
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
+        <!--here-->
+        <br class="row">
+            <!--hereeee-->
+            <!--<input class="col-md-6 col-md-offset-3 text-center">-->
                 <h1>Welcome</h1>
                 {%  if not user.is_authenticated %}
 	                <a href='/bank/register'>Register here</a>
-	                <a href='/bank/sign-in'>Login here</a>
+	                <a href='/bank/login'>Login here</a>
+                {% else %}
+                     <a href = "/bank/logout">Logout</a>
+                    <form id="message_form" method="post" action="/bank/"
+                          enctype="multipart/form-data">
+
+                        {% csrf_token %}
+                        {{ message_form.content }} </br>
+                        <input type ="submit" name="em_mes_input" value="Submit"> </input>
+                        </form>
 	            {% endif %}
 
-	            {% for mess in messages %}
-	            	<p> {{mess.content}} </p>
-
-	            {% endfor %}
+                {% if messages %}
+                    {% for mess in messages %}
+                        <p> {{mess.content}} posted by {{message.user_profile}} </p>
+                    {% endfor %}
+                {% else %}
+                    <p>No emergency messeges posted by anyone</p>
+                {% endif %}
 
 
 

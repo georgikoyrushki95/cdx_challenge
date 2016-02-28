@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"em",
+				"em_message_form"
+			],
+			[
+				"Em",
+				"EmergencyMessageForm"
+			],
+			[
+				"bank",
+				"bank_app"
+			],
+			[
+				"Http",
+				"HttpResponseRedirect"
+			],
+			[
+				"Htt",
+				"HttpResponseRedirect"
+			],
+			[
 				"St",
 				"STATIC_PATH"
 			],
@@ -19,6 +39,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/C/Users/ASUS/Desktop/discreteLog.py",
+			"settings":
+			{
+				"buffer_size": 25,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
@@ -66,8 +94,30 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/bank_app",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/cdx_project",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/bank_app"
+	],
 	"file_history":
 	[
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/bank_app/index.html",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/bank_app/error_message.html",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/bank_app/login.html",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/bank_app/urls.py",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/bank_app/forms.py",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/bank_app/models.py",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/bank_app/views.py",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/base.html",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/bank_app/register.html",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/cdx_project/settings.py",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/bank_app/base.html",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/cdx_project/urls.py",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/bank_app/registrer.html",
+		"/C/Users/ASUS/cdx_challenge/cdx_challenge/cdx_project/templates/index.html",
 		"/C/Users/ASUS/django_workspace/tango_with_django_project/tango_with_django_project/settings.py",
 		"/C/Users/ASUS/django_workspace/tango_with_django_project/tango_with_django_project/urls.py",
 		"/C/Users/ASUS/django_workspace/tango_with_django_project/rango/views.py",
@@ -109,8 +159,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/ASUS/Desktop/discreteLog.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25,
+								25
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -195,7 +274,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 152.0,
+	"side_bar_width": 172.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
