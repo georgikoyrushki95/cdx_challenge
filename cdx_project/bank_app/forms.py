@@ -15,13 +15,13 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'email', 'password', 'first_name', )
 
 
 class EmergencyMessageForm(forms.ModelForm):
 	content = forms.TextInput()
+
     
 	class Meta:
 		model = EmergencyMessage
-
-        fields = ('content', 'user_profile')
+        fields = ('content')
