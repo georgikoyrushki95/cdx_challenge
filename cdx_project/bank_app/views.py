@@ -13,13 +13,9 @@ def user_logout(request):
 def index(request):
 	if request.method == "POST":
 		# print request.POST.get('content')
-		message_form = EmergencyMessageForm(request.POST)
-		
-		if message_form.is_valid():
-			print "success"
-			message_form.save()
-		else:
-			print "failire"
+
+		message = EmergencyMessage(content = request.POST.get('content'),  user = request.user)
+		message.save()
 
 	message_form = EmergencyMessageForm()
 	context_dict = {'messages' : EmergencyMessage.objects.all(), 'message_form': message_form}

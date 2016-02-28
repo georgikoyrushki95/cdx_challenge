@@ -9,7 +9,7 @@ class UserProfile(models.Model):
 		return self.user
 
 class EmergencyMessage(models.Model):
-	user_profile = models.ForeignKey(UserProfile)
+	user = models.ForeignKey(User)
 	content = models.CharField(max_length = 500)
 
 	def __unicode__(self):

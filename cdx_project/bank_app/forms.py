@@ -20,6 +20,7 @@ class UserForm(forms.ModelForm):
 
 class EmergencyMessageForm(forms.ModelForm):
 	content = forms.CharField(max_length = 500, help_text = "Please enter your emergency message")
+    
 	class Meta:
 		model = EmergencyMessage
-        fields = ('content', )
+        fields = ('content', 'user_profile')
