@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from models import EmergencyMessage
+from models import EmergencyMessage, UserProfile
 from bank_app.forms import UserForm, UserProfileForm, EmergencyMessageForm
 from forms import EmergencyMessageForm
 from django.contrib.auth import authenticate, login, logout
@@ -12,13 +12,16 @@ def user_logout(request):
 
 def index(request):
 	if request.method == "POST":
-		# print request.POST.get('content')
-
 		message = EmergencyMessage(content = escape(request.POST.get('content')),  user = request.user)
 		message.save()
 
 	message_form = EmergencyMessageForm()
-	context_dict = {'messages' : EmergencyMessage.objects.all()[::-1], 'message_form': message_form}
+	if (request.user.id):
+		user = request.user
+		userProfile = UserProfile.objects.get(user = user)
+		context_dict = {'messages' : EmergencyMessage.objects.all()[::-1], 'message_form': message_form, 'user_profile': userProfile}
+	else:
+		context_dict = {'messages' : EmergencyMessage.objects.all()[::-1], 'message_form': message_form}
 	return render(request, 'bank_app/index.html', context_dict)
 
 
@@ -26,9 +29,9 @@ def register(request):
 	registered = False
 
 	if request.method == 'POST':
-		user_form = escape(UserForm(data = request.POST))
-		user_profile_form = escape(UserProfileForm(data = request.POST))
-		print user_form.is_valid()
+		user_form = UserForm(data = request.POST)
+		user_profile_form = UserProfileForm(data = request.POST)
+		#print user_form.is_valid()
 		if user_form.is_valid() and user_profile_form.is_valid():
 			print "Hello"
 			user = user_form.save()

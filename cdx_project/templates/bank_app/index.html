@@ -7,12 +7,21 @@
         <div class="row">
             <div class="col-md-6 text-center">
                 <h1>Welcome</h1>
-                <p class="lead">Share your grivous thoughts with the world... Before its end...</p>
+                <p class="lead">Share your grievous thoughts with the world... Before its end...</p>
+
+                {% if user.is_authenticated %}
+                    Name: {{user_profile.user.username}}
+                <br/>
+                    Email: {{user_profile.user.email}}
+                <br/>
+                    Balance: {{user_profile.balance}}
+                <br/>
+                {% endif %}
 
                 {%  if not user.is_authenticated %}
                 <a href='/bank/register' class="btn btn-primary">Register here</a>
                 <h3>OR</h3>
-                <a href='/bank/user_login' class="btn btn-primary">Login here</a>
+                <a href='/bank/login' class="btn btn-primary">Login here</a>
                 {% endif %}
                 {%  if user.is_authenticated %}
                     <form id="message_form" method="post" action="/bank/"
