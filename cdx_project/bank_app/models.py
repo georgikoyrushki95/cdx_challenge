@@ -10,7 +10,7 @@ class UserProfile(models.Model):
 
 class EmergencyMessage(models.Model):
 	user = models.ForeignKey(User)
-	content = models.CharField(max_length = 500)
+	content = models.TextField(max_length = 1000)
 
 	def __unicode__(self):
 		return self.content

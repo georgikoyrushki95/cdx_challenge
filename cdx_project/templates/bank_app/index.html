@@ -4,40 +4,47 @@
 {% block body_block %}
 
     <div class="container">
-        <!--here-->
-        <br class="row">
-            <!--hereeee-->
-            <!--<input class="col-md-6 col-md-offset-3 text-center">-->
+        <div class="row">
+            <div class="col-md-6 text-center">
                 <h1>Welcome</h1>
+                <p class="lead">Share your grivous thoughts with the world... Before its end...</p>
+
                 {%  if not user.is_authenticated %}
-	                <a href='/bank/register'>Register here</a>
-	                <a href='/bank/login'>Login here</a>
-                {% else %}
-                     <a href = "/bank/logout">Logout</a>
+                <a href='/bank/register' class="btn btn-primary">Register here</a>
+                <h3>OR</h3>
+                <a href='/bank/user_login' class="btn btn-primary">Login here</a>
+                {% endif %}
+                {%  if user.is_authenticated %}
                     <form id="message_form" method="post" action="/bank/"
                           enctype="multipart/form-data">
 
                         {% csrf_token %}
-                        {{ message_form.content }} </br>
-                        <input type ="submit" name="em_mes_input" value="Submit"> </input>
-                        </form>
-	            {% endif %}
+                        <div class="form-group">
+                            <label>Please enter your emergency message</label>
+                            <br/>
+                            {{ message_form.content }} </br>
+                        </div>
 
+                        <input type="submit" class="btn btn-primary" name="em_mes_input" value="Submit"> </input>
+                    </form>
+	            {% endif %}
+            </div>
+            <div class="col-md-6 text-center">
                 {% if messages %}
                     {% for mess in messages %}
-                        <p> {{mess.content}} posted by {{message.user_profile}} </p>
+
+                        <blockquote>
+                            <p>{{mess.content}}</p>
+                            <footer>posted by {{mess.user}}</footer>
+                        </blockquote>
+                        <hr/>
                     {% endfor %}
                 {% else %}
-                    <p>No emergency messeges posted by anyone</p>
+                    <p>No emergency messages posted by anyone</p>
                 {% endif %}
-
-
-
             </div>
         </div>
-
     </div>
-
 
 {% endblock %}
 
